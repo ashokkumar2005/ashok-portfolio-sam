@@ -7,7 +7,7 @@ import Projects from '../components/Projects';
 import Address  from '../components/Address';
 import Contact  from '../components/Contact';
 import Footer   from '../components/Footer';
-import api      from '../utils/api';
+import { getUsers, getProjects } from '../api';
 
 export default function Home() {
   const [profile,  setProfile]  = useState(null);
@@ -15,17 +15,24 @@ export default function Home() {
   const [loading,  setLoading]  = useState(true);
 
   useEffect(() => {
-    (async () => {
+    const fetchData = async () => {
       try {
-        const [p, j] = await Promise.all([api.get('/profile'), api.get('/projects')]);
-        setProfile(p.data);
-        setProjects(j.data);
+        // ✅ USE CORRECT FUNCTIONS
+        const [profileData, projectData] = await Promise.all([
+          getUsers(),
+          getProjects()
+        ]);
+
+        setProfile(profileData);
+        setProjects(projectData);
       } catch (err) {
         console.error('Failed to load data:', err);
       } finally {
         setLoading(false);
       }
-    })();
+    };
+
+    fetchData();
   }, []);
 
   if (loading) {
