@@ -18,7 +18,11 @@ export const getProjects = async () => {
 };
 
 // ✅ LOGIN (if using auth)
+<<<<<<< HEAD
 export const loginUser = async (data) => {
+=======
+export const login = async (data) => {
+>>>>>>> ea507379526c6719be382f19044bba7c321fdbed
   const res = await fetch(`${API}/api/auth/login`, {
     method: "POST",
     headers: {
