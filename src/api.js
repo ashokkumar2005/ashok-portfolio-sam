@@ -3,7 +3,7 @@ const API = import.meta.env.VITE_API_URL;
 // Debug (optional - remove later)
 console.log("API URL:", API);
 
-// ✅ GET PROFILE (users)
+// ✅ GET USERS
 export const getUsers = async () => {
   const res = await fetch(`${API}/api/users`);
   if (!res.ok) throw new Error("Failed to fetch users");
@@ -17,12 +17,8 @@ export const getProjects = async () => {
   return res.json();
 };
 
-// ✅ LOGIN (if using auth)
-<<<<<<< HEAD
+// ✅ LOGIN
 export const loginUser = async (data) => {
-=======
-export const login = async (data) => {
->>>>>>> ea507379526c6719be382f19044bba7c321fdbed
   const res = await fetch(`${API}/api/auth/login`, {
     method: "POST",
     headers: {
