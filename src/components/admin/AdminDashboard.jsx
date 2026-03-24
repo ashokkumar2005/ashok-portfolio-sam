@@ -59,7 +59,7 @@ export default function AdminDashboard() {
   const [loading, setLoading]   = useState(true);
   const [saving, setSaving]     = useState(false);
   const [toast, setToast]       = useState(null);
-  const [editProj, setEditProj] = useState(null);  // null = add mode, obj = edit mode
+  const [editProj, setEditProj] = useState(null);
   const [showProjForm, setShowProjForm] = useState(false);
 
   const imgRef    = useRef();
@@ -186,7 +186,6 @@ export default function AdminDashboard() {
       <aside style={{ width:240, background:'var(--bg-2)', borderRight:'1px solid var(--border)',
         padding:'24px 16px', position:'fixed', top:0, bottom:0, left:0, zIndex:10,
         display:'flex', flexDirection:'column', gap:4 }}>
-        {/* Logo */}
         <div style={{ padding:'12px 4px 24px', borderBottom:'1px solid var(--border)', marginBottom:8 }}>
           <div style={{ fontFamily:'var(--font-code)', fontSize:'0.88rem', color:'var(--primary)' }}>
             Admin Panel
@@ -389,7 +388,6 @@ export default function AdminDashboard() {
               </button>
             </div>
 
-            {/* Project Form */}
             {showProjForm && (
               <ProjectForm
                 initial={editProj}
@@ -399,7 +397,6 @@ export default function AdminDashboard() {
               />
             )}
 
-            {/* Projects List */}
             {projects.length === 0 && !showProjForm && (
               <div className="card" style={{ textAlign:'center', padding:'48px', color:'var(--text-muted)' }}>
                 <div style={{ fontSize:'3rem', marginBottom:12 }}>🚀</div>
@@ -414,7 +411,9 @@ export default function AdminDashboard() {
                 <div key={proj._id} className="card" style={{ padding:'18px 20px',
                   display:'flex', alignItems:'center', gap:16 }}>
                   {proj.image && (
-                    <img src={proj.image} alt={proj.title}
+                    <img
+                      src={proj.image.startsWith('http') ? proj.image : `${BASE_URL}${proj.image}`}
+                      alt={proj.title}
                       style={{ width:56, height:56, objectFit:'cover', borderRadius:8,
                         border:'1px solid var(--border)', flexShrink:0 }} />
                   )}
@@ -457,7 +456,7 @@ export default function AdminDashboard() {
 
 // ── Project Form ──────────────────────────────────────────────────────────────
 function ProjectForm({ initial, onSave, onCancel, saving }) {
-  const [form, setForm]   = useState({
+  const [form, setForm] = useState({
     title: initial?.title || '',
     description: initial?.description || '',
     tech: initial?.tech?.join(', ') || '',
@@ -518,7 +517,6 @@ function ProjectForm({ initial, onSave, onCancel, saving }) {
           </div>
         </div>
 
-        {/* Image Upload */}
         <div className="form-group">
           <label className="label">Project Image</label>
           <input ref={fileRef} type="file" accept="image/*" style={{ display:'none' }}
@@ -554,7 +552,6 @@ function SkillEditor({ label, icon, skills, onChange }) {
   const addSkill = () => {
     const trimmed = input.trim();
     if (!trimmed) return;
-    // avoid duplicates
     if (!skills.includes(trimmed)) {
       onChange([...skills, trimmed]);
     }
@@ -574,7 +571,6 @@ function SkillEditor({ label, icon, skills, onChange }) {
 
   return (
     <div className="card" style={{ marginBottom: 16, padding: '22px 24px' }}>
-      {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
         <span style={{ fontSize: '1.1rem' }}>{icon}</span>
         <label className="label" style={{ fontSize: '0.85rem', margin: 0 }}>{label}</label>
@@ -584,7 +580,6 @@ function SkillEditor({ label, icon, skills, onChange }) {
         </span>
       </div>
 
-      {/* Add Input */}
       <div style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
         <input
           className="input"
@@ -604,7 +599,6 @@ function SkillEditor({ label, icon, skills, onChange }) {
         </button>
       </div>
 
-      {/* Skill Chips */}
       {skills.length > 0 ? (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
           {skills.map((s, i) => (
