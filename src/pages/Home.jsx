@@ -13,20 +13,20 @@ export default function Home() {
   const [profile,  setProfile]  = useState(null);
   const [projects, setProjects] = useState([]);
   const [loading,  setLoading]  = useState(true);
+  const [error,    setError]    = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // ✅ USE CORRECT FUNCTIONS
         const [profileData, projectData] = await Promise.all([
           getUsers(),
           getProjects()
         ]);
-
         setProfile(profileData);
         setProjects(projectData);
       } catch (err) {
         console.error('Failed to load data:', err);
+        setError(true); // backend offline — still show portfolio
       } finally {
         setLoading(false);
       }
@@ -37,10 +37,16 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div style={{ minHeight:'100vh', display:'flex', alignItems:'center',
-        justifyContent:'center', background:'var(--bg)', flexDirection:'column', gap:16 }}>
-        <div className="spinner" style={{ width:40, height:40, borderWidth:3 }} />
-        <div style={{ fontFamily:'var(--font-code)', fontSize:'0.88rem', color:'var(--text-muted)' }}>
+      <div style={{
+        minHeight: '100vh', display: 'flex', alignItems: 'center',
+        justifyContent: 'center', background: 'var(--bg)',
+        flexDirection: 'column', gap: 16
+      }}>
+        <div className="spinner" style={{ width: 40, height: 40, borderWidth: 3 }} />
+        <div style={{
+          fontFamily: 'var(--font-code)', fontSize: '0.88rem',
+          color: 'var(--text-muted)'
+        }}>
           Loading portfolio...
         </div>
       </div>
@@ -52,6 +58,15 @@ export default function Home() {
       <div className="grid-bg" />
       <div className="orb orb-1" />
       <div className="orb orb-2" />
+
+      {error && (
+        <div style={{
+          background: '#ff000022', color: '#ff6b6b', padding: '10px 20px',
+          textAlign: 'center', fontSize: '0.85rem'
+        }}>
+          ⚠️ Backend server is offline — start the server to load profile data.
+        </div>
+      )}
 
       <Navbar profileName={profile?.name} />
       <Hero    profile={profile} />
