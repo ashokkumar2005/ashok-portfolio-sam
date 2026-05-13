@@ -1,7 +1,7 @@
 # 🌐 Portfolio Frontend (React)
 
 This is the **frontend of my personal portfolio website**, built using **React.js** and **Vite**.
-It presents my profile, projects, skills, and contact details through a **modern, responsive, and user-friendly interface**.
+It showcases my profile, projects, skills, and contact details through a **modern, responsive, and user-friendly interface**.
 
 ---
 
@@ -22,6 +22,16 @@ It presents my profile, projects, skills, and contact details through a **modern
 * 📄 Profile and skills presentation
 * 🔌 Seamless API integration with backend
 * 🧩 Scalable component-based architecture
+* ⚡ Fast performance with Vite
+
+---
+
+## 🧠 Key Highlights (For Recruiters)
+
+* Clean and modular React component structure
+* API-driven dynamic content rendering
+* Optimized frontend performance
+* Production-ready folder organization
 
 ---
 
@@ -62,7 +72,7 @@ npm run dev
 
 This frontend connects to a backend server running at:
 
-```
+```bash
 http://localhost:5000
 ```
 
@@ -74,11 +84,51 @@ http://localhost:5000
 
 *Add screenshots here to visually showcase your portfolio UI*
 
+Example:
+
+```
+/screenshots/home.png
+/screenshots/projects.png
+```
+
 ---
 
 ## 🌍 Live Demo
 
 🔗 https://onepiece-portfolio-sam.vercel.app/
+
+---
+
+## 📁 Suggested Folder Structure
+
+```
+src/
+│
+├── components/
+├── pages/
+├── services/   # API calls (Axios)
+├── assets/
+├── App.jsx
+└── main.jsx
+```
+
+---
+
+## 📌 Notes
+
+* Use `.env` for API base URLs (e.g., `VITE_API_URL`)
+* Update backend URL for production deployment
+* Optimize images and enable lazy loading for better performance
+
+---
+
+## ⭐ Future Improvements
+
+* 🎨 Add animations (Framer Motion)
+* 🔐 Implement authentication (admin dashboard)
+* 🌐 Deploy backend with production API
+* ⚡ Improve SEO & accessibility
+* 📊 Add analytics tracking
 
 ---
 
@@ -91,19 +141,6 @@ http://localhost:5000
 
 ---
 
-## 📌 Notes
+## ⭐ Support
 
-* Update API base URLs when deploying to production
-* Consider using environment variables (`.env`) for API configuration
-* Optimize assets and enable lazy loading for better performance
-
----
-
-## ⭐ Future Improvements
-
-* 🎨 Enhance UI/UX with animations
-* 🔐 Add authentication (admin/project management)
-* 🌐 Deploy backend and connect with production API
-* ⚡ Improve performance and SEO
-
----
+If you like this project, consider giving it a ⭐ on GitHub!
