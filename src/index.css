@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  /* Color tokens — editorial light theme */
+  --color-bg: #eeefe9;
+  --color-surface: #f8f8f5;
+  --color-surface-2: #e3e4dc;
+  --color-border: rgba(20, 20, 15, 0.1);
+  --color-border-strong: rgba(20, 20, 15, 0.2);
+  --color-text: #1b1b17;
+  --color-text-muted: #6c6c62;
+  --color-text-faint: #a3a397;
+
+  --color-accent-violet: #c1705f; /* coral — eyebrows, small accents */
+  --color-accent-cyan: #1f8f68; /* emerald — headline accent, primary CTA */
+  --color-accent-cyan-bright: #2fae82;
+  --color-accent-success: #1f8f68;
+
+  /* Fonts */
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-accent-cyan);
+  color: white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: 999px;
+  border: 2px solid var(--color-bg);
+}
+
+/* Reusable design primitives */
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+}
+
+.text-gradient {
+  color: var(--color-accent-cyan);
+}
+
+.border-gradient {
+  position: relative;
+}
+.border-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, var(--color-accent-violet), var(--color-accent-cyan));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
+/* Editorial serif numeral used for section markers, e.g. "01." */
+.editorial-number {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-variant-numeric: oldstyle-nums;
+}
+
+/* Admin dashboard dark mode — scoped so the public portfolio always stays
+   in its editorial light theme; only .admin-dark descendants flip. */
+.admin-dark {
+  --color-bg: #14150f;
+  --color-surface: #1b1c15;
+  --color-surface-2: #24261c;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-strong: rgba(255, 255, 255, 0.2);
+  --color-text: #f2f2ec;
+  --color-text-muted: #a3a396;
+  --color-text-faint: #6c6c60;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
