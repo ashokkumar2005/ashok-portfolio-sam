@@ -114,15 +114,6 @@ export default function Contact() {
                     <a href={item.href} onClick={handleEmailClick} className="w-full sm:flex-1 text-left block outline-none">
                       {Content}
                     </a>
-                    <a
-                      href={gmailHref}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-2 sm:mt-0 text-xs text-accent-cyan hover:underline shrink-0"
-                      title="Compose in Gmail"
-                    >
-                      Compose
-                    </a>
                   </div>
                 );
               }
