@@ -104,7 +104,7 @@ export default function Hero() {
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[0.85fr_1.15fr] gap-16 items-center">
         <TiltPortrait />
 
-        <div>
+        <div className="min-w-0">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -118,7 +118,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-6xl sm:text-7xl leading-[1.05] tracking-tight"
+            className="font-display text-2xl min-[360px]:text-4xl sm:text-7xl leading-[1.05] tracking-tight"
           >
             {profile.name ? profile.name.split(" ")[0].toUpperCase() : "ASHOKKUMAR"}
             <span className="italic text-accent-cyan"> {profile.roles?.[1] || "software developer"}</span>
@@ -137,10 +137,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-10 flex items-center gap-8"
+            className="mt-10 flex flex-wrap items-center gap-4 sm:gap-8"
           >
             {stats.map((stat, i) => (
-              <div key={stat.label} className="flex items-center gap-8">
+              <div key={stat.label} className="flex items-center gap-4 sm:gap-8">
                 <div>
                   <p className="mono-label text-[10px] uppercase text-text-faint mb-1">
                     {stat.label}

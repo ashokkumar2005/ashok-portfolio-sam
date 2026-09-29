@@ -77,7 +77,7 @@ export default function Contact() {
                   <span className="w-10 h-10 rounded-xl bg-surface border border-border flex items-center justify-center text-accent-cyan shrink-0">
                     <item.icon size={16} />
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-xs text-text-faint mono-label uppercase">
                       {item.label}
                     </p>

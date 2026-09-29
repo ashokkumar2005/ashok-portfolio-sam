@@ -35,7 +35,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="grid grid-cols-3 md:grid-cols-1 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-1 gap-4"
           >
             {stats.map((stat) => (
               <div key={stat.label} className="glass rounded-2xl p-5">

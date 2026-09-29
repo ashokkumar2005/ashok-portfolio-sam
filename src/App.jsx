@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { ProfileProvider } from "./context/ProfileContext";
+import { useProfile } from "./context/ProfileContext";
+import PortfolioLoader from "./components/PortfolioLoader";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -16,6 +18,10 @@ import AdminLayout from "./components/admin/AdminLayout";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 
 function PublicSite() {
+  const { loading } = useProfile();
+
+  if (loading) return <PortfolioLoader />;
+
   return (
     <>
       <Navbar />

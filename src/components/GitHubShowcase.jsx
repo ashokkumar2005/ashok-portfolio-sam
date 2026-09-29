@@ -63,8 +63,8 @@ export default function GitHubShowcase() {
         >
           <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-accent-violet/20 blur-[100px]" />
 
-          <div className="relative flex flex-col sm:flex-row sm:items-center gap-6 justify-between">
-            <div className="flex items-center gap-4">
+          <div className="relative flex min-w-0 flex-col sm:flex-row sm:items-center gap-6 justify-between">
+            <div className="flex min-w-0 items-center gap-4">
               <div className="w-16 h-16 rounded-2xl overflow-hidden glass shrink-0">
                 {data?.avatar_url ? (
                   <img
@@ -78,11 +78,11 @@ export default function GitHubShowcase() {
                   </div>
                 )}
               </div>
-              <div>
-                <p className="font-display font-semibold text-xl">
+              <div className="min-w-0">
+                <p title={username} className="font-display font-semibold text-xl truncate">
                   @{username}
                 </p>
-                <p className="text-text-muted text-sm">
+                <p className="text-text-muted text-sm break-words">
                   {data?.bio || "Full Stack MERN Developer"}
                 </p>
               </div>
@@ -99,7 +99,7 @@ export default function GitHubShowcase() {
             </a>
           </div>
 
-          <div className="relative grid grid-cols-3 gap-4 mt-8">
+          <div className="relative grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mt-8">
             {stats.map((stat) => (
               <div
                 key={stat.label}
@@ -117,7 +117,7 @@ export default function GitHubShowcase() {
           </div>
 
           {repos.length > 0 && (
-            <div className="relative grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+            <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
               {repos.slice(0, 6).map((repo) => (
                 <a
                   key={repo.id}

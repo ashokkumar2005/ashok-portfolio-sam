@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FiArrowLeft, FiGithub, FiArrowUpRight } from "react-icons/fi";
-import api from "../services/api";
+import { useProfile } from "../context/ProfileContext";
 
 const detailSections = [
   { key: "overview", title: "Overview" },
@@ -15,30 +14,8 @@ const detailSections = [
 
 export default function ProjectDetail() {
   const { id } = useParams();
-  const [project, setProject] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let mounted = true;
-    setLoading(true);
-    api
-      .get(`/projects`)
-      .then((res) => {
-        if (!mounted) return;
-        const match = (res.data || []).find((item) => item.slug === id || item._id === id || item.id === id);
-        setProject(match || null);
-      })
-      .finally(() => {
-        if (mounted) setLoading(false);
-      });
-    return () => {
-      mounted = false;
-    };
-  }, [id]);
-
-  if (loading) {
-    return <div className="min-h-screen pt-32 pb-24 px-6 text-text-muted">Loading project…</div>;
-  }
+  const { projects } = useProfile();
+  const project = projects.find((item) => item.slug === id || item._id === id || item.id === id);
 
   if (!project) return <Navigate to="/" replace />;
 
