@@ -11,7 +11,7 @@ export default function PortfolioLoader() {
         dnaColor="#1f8f68"
         secondaryColor="#c1705f"
       />
-      <span>Loading portfolio</span>
+      <span>Loading portfolio (Wait 20 sec🦋)</span>
     </div>
   );
 }
