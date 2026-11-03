@@ -14,7 +14,7 @@ export function ProfileProvider({ children }) {
   const [skills, setSkills] = useState(staticSkills);
   const [education, setEducation] = useState(staticEducation);
   const [projects, setProjects] = useState(staticProjects);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     let mounted = true;
