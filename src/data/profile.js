@@ -4,12 +4,11 @@
 // won't need to change, just the data source.
 
 export const profile = {
-  name: "SAM",
+  name: "Ashokkumar",
   roles: [
     "Full Stack MERN Developer",
-    "REST API Builder",
-    "React.js Engineer",
-  ],
+    "software developer",
+    ],
   tagline:
     "I build scalable full-stack web applications — clean APIs on the backend, responsive interfaces on the front.",
   summary:
